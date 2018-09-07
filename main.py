@@ -18,13 +18,14 @@ df = pd.read_csv(file_loc)
 # Print file head, data format with years, level 1/2, industry and value
 print(df.head())
 
-d = {'year':'Year', 'value':'Total / million SGD'}
+#Rename value to total
+d = {'value':'Total'}
 # Pandas group by year then sum
 nett_year = df.groupby(['year'], as_index=False)['value'].sum().rename(columns=d)
 
 #Gathering x and y data
-x_year = nett_year['Year']
-y_nett = nett_year['Total / million SGD']
+x_year = nett_year['year']
+y_nett = nett_year['Total']
 #Initialise plot
 ax = plt.subplot(111)
 #Plotting function with nicer defaults
